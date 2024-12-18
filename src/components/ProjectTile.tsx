@@ -49,7 +49,7 @@ const ProjectTile = ({ project }: { project: Project }) => {
     datasets: [
       {
         label: "Total Commits ",
-        data: calcCommits(Data.map((data, index) => data.commits)),
+        data: calcCommits(Data.map((data) => data.commits)),
         backgroundColor: function (context) {
           const chart = context.chart;
           const { ctx, chartArea } = chart;
