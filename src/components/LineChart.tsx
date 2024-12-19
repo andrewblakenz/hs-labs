@@ -6,10 +6,12 @@ import { ChartData } from "chart.js";
 
 function LineChart({ chartData }: { chartData: ChartData<"line"> }) {
   return (
-    <div className="chart-container">
+    <div className="chart-container" style={{ position: "relative", paddingTop: 32, width: "100%", height: "150px" }}>
       <Line
         data={chartData}
         options={{
+          responsive: true,
+          maintainAspectRatio: false,
           interaction: {
             intersect: false,
             mode: "index",
