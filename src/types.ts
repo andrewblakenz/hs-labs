@@ -13,7 +13,7 @@ export interface ProjectData {
 interface ChartDataSet {
   label: string;
   data: number[];
-  backgroundColor: string[];
+  backgroundColor: (context: unknown) => unknown;
   borderColor: string;
   borderWidth: number;
   fill: boolean | string;

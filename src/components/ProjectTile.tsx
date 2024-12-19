@@ -1,21 +1,22 @@
 "use client";
 import React, { Suspense, lazy } from "react";
-import Chart from "chart.js/auto";
-import { CategoryScale } from "chart.js";
+import { Chart, CategoryScale, ChartData, Color, registerables } from "chart.js";
 import { useState, useEffect } from "react";
 import { Data } from "../utils/Data";
 
 import ProjectIcon from "./icons/ProjectIcon";
 import CommitIcon from "./icons/CommitIcon";
 
-import { Project, ChartData } from "@/types";
+import { Project } from "@/types";
 
-Chart.register(CategoryScale);
+Chart.register(...registerables, CategoryScale);
 
 const LineChart = lazy(() => import("./LineChart"));
 
-let width, height, gradient;
-function getGradient(ctx, chartArea) {
+let width: number, height: number, gradient: Color;
+function getGradient(chart: Chart) {
+  const { ctx, chartArea } = chart;
+
   const chartWidth = chartArea.right - chartArea.left;
   const chartHeight = chartArea.bottom - chartArea.top;
   if (!gradient || width !== chartWidth || height !== chartHeight) {
@@ -32,7 +33,7 @@ function getGradient(ctx, chartArea) {
 }
 
 const calcCommits = (data: number[]) => {
-  const newArray = [];
+  const newArray = [] as number[];
   let totalCommits = 0;
   data.forEach((commitCount) => {
     const newCommitCount = totalCommits + commitCount;
@@ -50,15 +51,14 @@ const ProjectTile = ({ project }: { project: Project }) => {
       {
         label: "Total Commits ",
         data: calcCommits(Data.map((data) => data.commits)),
-        backgroundColor: function (context) {
+        backgroundColor: function (context: { chart: Chart; type: string }): Color | undefined {
           const chart = context.chart;
-          const { ctx, chartArea } = chart;
 
-          if (!chartArea) {
+          if (!chart.chartArea) {
             // This case happens on initial chart load
             return;
           }
-          return getGradient(ctx, chartArea);
+          return getGradient(chart /*ctx, chartArea*/);
         },
         borderColor: "#ff5003",
         borderWidth: 2,
@@ -100,7 +100,7 @@ const ProjectTile = ({ project }: { project: Project }) => {
       </div>
       <p>{project.excerpt}</p>
       <Suspense fallback={<div>Loading...</div>}>
-        <LineChart chartData={chartData} />
+        <LineChart chartData={chartData as ChartData<"line">} />
       </Suspense>
     </div>
   );

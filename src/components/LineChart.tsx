@@ -1,9 +1,10 @@
 import React from "react";
 import { Line } from "react-chartjs-2";
+import { ChartData } from "chart.js";
 
-import { ChartData } from "../types";
+//import { ChartData } from "../types";
 
-function LineChart({ chartData }: { chartData: ChartData[] }) {
+function LineChart({ chartData }: { chartData: ChartData<"line"> }) {
   return (
     <div className="chart-container">
       <Line
