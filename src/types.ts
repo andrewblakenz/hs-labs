@@ -1,7 +1,7 @@
 export interface Project {
   title: string;
   excerpt: string;
-  commits: number;
+  totalCommits: number;
 }
 
 export interface ProjectData {
@@ -26,3 +26,18 @@ export interface ChartData {
   labels: string[];
   datasets: ChartDataSet[];
 }
+
+export type CommitData =
+  | {
+      date: string | undefined;
+      message: string;
+    }[]
+  | null;
+
+export type GitProject = {
+  title: string;
+  excerpt: string | null;
+  totalCommits: number;
+  commitData: CommitData;
+  chartData: ProjectData[];
+};

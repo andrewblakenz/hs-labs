@@ -1,8 +1,6 @@
 import "./styles.css";
 import Sidebar from "../components/Sidebar";
-import ProjectTile from "@/components/ProjectTile";
-
-import dummyData from "../data.json";
+import ProjectGrid from "@/components/ProjectGrid";
 
 const Home = () => {
   return (
@@ -18,11 +16,7 @@ const Home = () => {
             Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem
             aperiam, eaque ipsa quae ab illo inventore veritatis et quasi.
           </h3>
-          <div className="project-wrapper">
-            {dummyData.map((poject, index) => {
-              return <ProjectTile project={poject} key={index} />;
-            })}
-          </div>
+          <ProjectGrid />
         </div>
       </div>
     </div>

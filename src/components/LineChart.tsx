@@ -6,7 +6,7 @@ import { ChartData } from "chart.js";
 
 function LineChart({ chartData }: { chartData: ChartData<"line"> }) {
   return (
-    <div className="chart-container" style={{ position: "relative", paddingTop: 32, width: "100%", height: "150px" }}>
+    <div className="chart-container">
       <Line
         data={chartData}
         options={{

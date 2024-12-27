@@ -1,13 +1,13 @@
-"use client";
+/*"use client";
 import React, { Suspense, lazy } from "react";
 import { Chart, CategoryScale, ChartData, Color, registerables } from "chart.js";
-import { useState } from "react";
-import capitalize from "../utils/capitalize";
+import { useState, useEffect } from "react";
+import { Data } from "../utils/Data";
 
 import ProjectIcon from "./icons/ProjectIcon";
 import CommitIcon from "./icons/CommitIcon";
 
-import { GitProject } from "@/types";
+import { Project } from "@/types";
 
 Chart.register(...registerables, CategoryScale);
 
@@ -43,13 +43,13 @@ const calcCommits = (data: number[]) => {
   return newArray;
 };
 
-const ProjectTile = ({ project }: { project: GitProject }) => {
+const ProjectTile = ({ project }: { project: Project }) => {
   const [chartData] = useState<ChartData>({
-    labels: project.chartData.map((data) => data.month),
+    labels: Data.map((data) => data.month),
     datasets: [
       {
-        label: "Lifetime Commits ",
-        data: calcCommits(project.chartData.map((data) => data.commits)),
+        label: "Total Commits ",
+        data: calcCommits(Data.map((data) => data.commits)),
         backgroundColor: function (context: { chart: Chart; type: string }): Color | undefined {
           const chart = context.chart;
 
@@ -57,7 +57,7 @@ const ProjectTile = ({ project }: { project: GitProject }) => {
             // This case happens on initial chart load
             return;
           }
-          return getGradient(chart /*ctx, chartArea*/);
+          return getGradient(chart);
         },
         borderColor: "#ff5003",
         borderWidth: 2,
@@ -69,32 +69,28 @@ const ProjectTile = ({ project }: { project: GitProject }) => {
     ],
   });
 
-  if (!project) return null;
-
   return (
     <div className="project-tile">
       <div className="project-tile__header">
-        <div className="project-tile__header__inner">
-          <div className="project-tile__header__inner__left-col">
-            <ProjectIcon />
-            <h4 className="project-tile__header__inner__left-col__heading">
-              <span>HSL</span>
-              {capitalize(project.title)}
-            </h4>
-          </div>
-          <div className="project-tile__header__inner__right-col">
-            <div className="project-tile__header__inner__right-col__commit-wrapper">
-              <div className="project-tile__header__inner__right-col__commit-wrapper__icon">
-                <CommitIcon />
-              </div>
-              <div className="project-tile__header__inner__right-col__commit-wrapper__text">
-                <p>{project.totalCommits} commits</p>
-              </div>
+        <div className="project-tile__header__left-col">
+          <ProjectIcon />
+          <h4 className="project-tile__header__left-col__heading">
+            <span>HSL</span>
+            {project.title}
+          </h4>
+        </div>
+        <div className="project-tile__header__right-col">
+          <div className="project-tile__header__right-col__commit-wrapper">
+            <div className="project-tile__header__right-col__commit-wrapper__icon">
+              <CommitIcon />
+            </div>
+            <div className="project-tile__header__right-col__commit-wrapper__text">
+              <p>{project.totalCommits} commits</p>
             </div>
           </div>
         </div>
-        {project.excerpt && <p>{project.excerpt}</p>}
       </div>
+      <p>{project.excerpt}</p>
       <Suspense fallback={<div>Loading...</div>}>
         <LineChart chartData={chartData as ChartData<"line">} />
       </Suspense>
@@ -103,3 +99,4 @@ const ProjectTile = ({ project }: { project: GitProject }) => {
 };
 
 export default ProjectTile;
+*/

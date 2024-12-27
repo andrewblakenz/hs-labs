@@ -12,6 +12,7 @@
     "again": "^0.0.1",
     "chart.js": "^4.4.7",
     "next": "15.1.0",
+    "octokit": "^4.0.2",
     "react": "^19.0.0",
     "react-chartjs-2": "^5.2.0",
     "react-dom": "^19.0.0"
