@@ -7,10 +7,8 @@ import FetchProjects from "@/utils/FetchProjects";
 const ProjectGrid = () => {
   const projects = FetchProjects();
 
-  console.log("Fetch Projects: ", projects);
-
   if (!projects) {
-    return null;
+    return <p>Loading Projects</p>; //TODO Set up Proper loading scene
   }
 
   return (

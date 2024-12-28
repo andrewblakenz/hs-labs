@@ -1,9 +1,3 @@
-export interface Project {
-  title: string;
-  excerpt: string;
-  totalCommits: number;
-}
-
 export interface ProjectData {
   id: number;
   month: string;
