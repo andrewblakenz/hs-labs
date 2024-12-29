@@ -17,6 +17,7 @@ body {
 
 body {
   --primary-orange: #ff5003;
+  --transparent-orange: #ff4f032c;
   --secondary-blue: #1c2f45;
   --secondary-light-blue: #e8eaec;
   --secondary-extra-light-blue: #f3f4f5;
@@ -248,9 +249,18 @@ a:hover {
   transition: all 0.3s ease 0s;
 }
 
+.project-tile__header--loading {
+  cursor: default;
+}
+
 .project-tile__header:hover {
   transform: scale(1.03);
   background-color: #d6d6d6;
+}
+
+.project-tile__header--loading:hover {
+  transform: scale(1);
+  background-color: #fff;
 }
 
 .project-tile__header__inner {
@@ -354,6 +364,27 @@ a:hover {
   max-width: 1000px;
   max-height: 800px;
   z-index: 2;
+  position: relative;
+}
+
+.project-modal__close {
+  background: var(--secondary-blue);
+  width: 32px;
+  height: 32px;
+  display: flex;
+  font-weight: 500;
+  justify-content: center;
+  align-items: center;
+  border-radius: 32px;
+  color: white;
+  position: absolute;
+  right: -8px;
+  top: -8px;
+  cursor: pointer;
+}
+
+.project-modal__close:hover {
+  filter: brightness(1.2);
 }
 
 .project-modal__inner {

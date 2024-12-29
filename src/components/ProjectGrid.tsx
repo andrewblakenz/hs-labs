@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
-import ProjectTile from "@/components/ProjectTile";
+import ProjectTile from "./ProjectTile";
+import LoadingTile from "./LoadingTile";
 
 import FetchProjects from "@/utils/FetchProjects";
 
@@ -8,7 +9,13 @@ const ProjectGrid = () => {
   const projects = FetchProjects();
 
   if (!projects) {
-    return <p>Loading Projects</p>; //TODO Set up Proper loading scene
+    return (
+      <div className="project-wrapper">
+        {Array.from(Array(4)).map((project, index) => {
+          return <LoadingTile key={index} />;
+        })}
+      </div>
+    );
   }
 
   return (

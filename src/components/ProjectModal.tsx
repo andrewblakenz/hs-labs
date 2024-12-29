@@ -74,6 +74,9 @@ const ProjectModal = ({ project, callback }: { project: GitProject; callback: ()
     <div className="project-modal-wrapper">
       <div className="project-modal-overlay" onClick={callback}></div>
       <div className="project-modal">
+        <div className="project-modal__close" onClick={callback}>
+          X
+        </div>
         <div className="project-modal__inner">
           <div className="project-modal__header">
             <div className="project-modal__header__left-col">
