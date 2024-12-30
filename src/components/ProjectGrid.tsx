@@ -3,10 +3,12 @@ import React from "react";
 import ProjectTile from "./ProjectTile";
 import LoadingTile from "./LoadingTile";
 
-import FetchProjects from "@/utils/FetchProjects";
+import { GitProject } from "@/types";
 
-const ProjectGrid = () => {
-  const projects = FetchProjects();
+// import FetchProjects from "@/utils/FetchProjects";
+
+const ProjectGrid = ({ projects }: { projects: GitProject[] }) => {
+  // const projects = FetchProjects();
 
   if (!projects) {
     return (

@@ -1,9 +1,14 @@
+"use client";
+
 import "./styles.css";
 import Sidebar from "../components/Sidebar";
 import ProjectGrid from "@/components/ProjectGrid";
 import { mainContentData } from "@/staticData";
+import FetchProjects from "@/utils/FetchProjects";
 
 const Home = () => {
+  const projects = FetchProjects();
+
   const headingText = (text: string) => {
     const splitText = text.split(/[*]/);
 
@@ -20,6 +25,10 @@ const Home = () => {
     }
   };
 
+  if (!projects) {
+    return <h4>LOADING 2</h4>;
+  }
+
   return (
     <div className="app-wrapper">
       <Sidebar />
@@ -27,7 +36,7 @@ const Home = () => {
         <div className="content__inner">
           {headingText(mainContentData.headingText)}
           {mainContentData.subText && <h3 className="content__inner__sub-heading">{mainContentData.subText}</h3>}
-          <ProjectGrid />
+          <ProjectGrid projects={projects} />
         </div>
       </div>
     </div>

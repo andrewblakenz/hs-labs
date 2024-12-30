@@ -2,6 +2,8 @@
 import React, { useState, Suspense, lazy } from "react";
 import { Chart, CategoryScale, ChartData, Color, registerables } from "chart.js";
 import capitalize from "../utils/capitalize";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 import ProjectIcon from "./icons/ProjectIcon";
 import CommitIcon from "./icons/CommitIcon";
@@ -98,7 +100,13 @@ const ProjectTile = ({ project }: { project: GitProject }) => {
           </div>
           {project.excerpt && <p>{project.excerpt}</p>}
         </div>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense
+          fallback={
+            <div className="chart-container">
+              <Skeleton baseColor="#fff" highlightColor="var(--transparent-orange)" width="100%" height="100%" />
+            </div>
+          }
+        >
           <LineChart chartData={chartData as ChartData<"line">} />
         </Suspense>
       </div>
