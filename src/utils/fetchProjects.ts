@@ -6,7 +6,7 @@ import { CommitData, GitProject } from "../types";
 type listUserReposResponse = Endpoints["GET /users/{username}/repos"]["response"];
 type listRepoCommitsResponse = Endpoints["GET /repos/{owner}/{repo}/commits"]["response"];
 
-const FetchProjects = async (): Promise<GitProject[]> => {
+const fetchProjects = async (): Promise<GitProject[]> => {
   const octokit = new Octokit({
     auth: process.env.GIT_FINE_TOKEN,
   });
@@ -89,4 +89,4 @@ const FetchProjects = async (): Promise<GitProject[]> => {
   }
 };
 
-export default FetchProjects;
+export default fetchProjects;

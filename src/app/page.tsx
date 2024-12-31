@@ -2,10 +2,10 @@ import "./styles.css";
 import Sidebar from "../components/Sidebar";
 import ProjectGrid from "@/components/ProjectGrid";
 import { mainContentData } from "@/staticData";
-import FetchProjects from "@/utils/FetchProjects";
+import fetchProjects from "@/utils/fetchProjects";
 
 const Home = async () => {
-  const projects = await FetchProjects();
+  const projects = await fetchProjects();
 
   const headingText = (text: string) => {
     const splitText = text.split(/[*]/);

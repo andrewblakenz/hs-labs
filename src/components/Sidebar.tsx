@@ -1,5 +1,7 @@
 import { sidebarData } from "@/staticData";
 
+import Subscribe from "./Subscribe";
+
 import LocationIcon from "./icons/LocationIcon";
 import FacebookIcon from "./icons/FacebookIcon";
 import YoutubeIcon from "./icons/YoutubeIcon";
@@ -37,12 +39,7 @@ const Sidebar = () => {
           </p>
         )}
         {sidebarData.aboutText && <p className="sidebar__text--transparent">{sidebarData.aboutText}</p>}
-        <div className="sidebar__search">
-          <div className="sidebar__search__input">
-            <input className="sidebar__search__input__inner" type="text" placeholder="Your Email" />
-          </div>
-          <div className="sidebar__search__button button">Subscribe</div>
-        </div>
+        <Subscribe />
         <div className="sidebar__social__wrapper">
           {sidebarData.socialLinks.facebook && (
             <Link href={sidebarData.socialLinks.facebook} className="sidebar__social__wrapper__link">
