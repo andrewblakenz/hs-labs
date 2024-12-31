@@ -48,7 +48,7 @@ const Subscribe = () => {
           </div>
           {!subscribing ? (
             <div className="sidebar__subscribe__button button" onClick={() => handleSubmit()}>
-              Subscribing
+              Subscribe
             </div>
           ) : (
             <div className="sidebar__subscribe__button button disabled">

@@ -542,6 +542,10 @@ a:hover {
     font-size: 3em;
   }
 
+  .content__inner__heading br {
+    display: none;
+  }
+
   .project-wrapper {
     grid-template-columns: 1fr;
   }
